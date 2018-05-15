@@ -44,6 +44,16 @@
 
   
 
+  <script>
+	(function(){
+		if(""){
+			if (prompt('这是加密文章，打赏先！','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
 </head>
 
 <body>
@@ -177,8 +187,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="项目负责人创建组织架构"><a href="#项目负责人创建组织架构" class="headerlink" title="项目负责人创建组织架构"></a>项目负责人创建组织架构</h3><img src="/2018/04/24/git-team-work/1.jpg" title="创建组织">
+            
+                <h3 id="项目负责人创建组织架构"><a href="#项目负责人创建组织架构" class="headerlink" title="项目负责人创建组织架构"></a>项目负责人创建组织架构</h3><img src="/2018/04/24/git-team-work/1.jpg" title="创建组织">
 <p>在控制面板中点击组织按钮,添加组织,在这里可以把组织理解为一个公司<br>添加成功后，进入刚刚新建的组织<br>邀请他人加入—-相当于公司成员<br>组织团队可以进行分组，默认的Owners是管理组<br><img src="/2018/04/24/git-team-work/2.jpg" title="组织"></p>
 <h3 id="项目负责人创建新的仓库"><a href="#项目负责人创建新的仓库" class="headerlink" title="项目负责人创建新的仓库"></a>项目负责人创建新的仓库</h3><p>创建新的仓库。<br>打勾 该仓库为私有的。<br>创建仓库。</p>
 <p>创建成功后，项目负责人下载git后，在需要上传的文件夹中右键选中 Git Bash Here<br>依次运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init      <span class="comment">#初始化</span></span><br><span class="line">git add .     <span class="comment">#添加到本地仓库 . 表示全部当前文件夹中的所有文件和目录 </span></span><br><span class="line">git commit -m <span class="string">"first commit"</span>  <span class="comment">#添加后生效的必须提交 -m 后面的是提交的备注</span></span><br><span class="line">git remote add origin http://10.92.216.250:3000/<span class="built_in">test</span>/test.git  <span class="comment">#连接我们新建的远程仓库</span></span><br><span class="line">git push -u origin master  <span class="comment">#将本地仓库的所有推送到远程仓库，需要输入帐号密码</span></span><br></pre></td></tr></table></figure></p>
@@ -210,8 +220,7 @@
 <h3 id="分支的基本操作"><a href="#分支的基本操作" class="headerlink" title="分支的基本操作"></a>分支的基本操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">分支的基本操作</span><br><span class="line">$ git branch   <span class="comment">#查看分支</span></span><br><span class="line">* master       <span class="comment">#有*的就是当前分支</span></span><br><span class="line">$ git branch <span class="built_in">test</span>  <span class="comment">#创建test分支</span></span><br><span class="line">$ git checkout <span class="built_in">test</span>   <span class="comment">#切换到test分支，然后可以在该分支进行常规的开发和操作,</span></span><br><span class="line">$ git checkout -b <span class="built_in">test</span>  <span class="comment">#创建并切换分支</span></span><br><span class="line">$ touch test2.txt  <span class="comment">#创建一个test2的文件夹</span></span><br><span class="line">$ git add test2.txt</span><br><span class="line">$ git commit -m <span class="string">'小张在新分支test中创建了一个text2.txt文件'</span></span><br><span class="line">$ git push origin <span class="built_in">test</span>  <span class="comment">#注意，这里是把本地的test分支推送到origin远程主机上</span></span><br><span class="line"></span><br><span class="line">$ git checkout master  <span class="comment">#切换到主分区</span></span><br><span class="line">$ git merge <span class="built_in">test</span>  <span class="comment">#合并指定分支到当前分支</span></span><br><span class="line">$ git branch -d <span class="built_in">test</span> <span class="comment">#删除test分支</span></span><br></pre></td></tr></table></figure>
 <h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>这波操作后gogs 上仓库就有新的test分支了<br>项目管理员可以在仓库设置中-&gt;管理分支-&gt;保护分支-&gt;把给主分支开启保护<br><img src="/2018/04/24/git-team-work/5.jpg" title="管理分支"><br>其他人可以在其他分支中创建合并请求<br><img src="/2018/04/24/git-team-work/6.jpg" title="合并请求"><br>该仓库管理团队的成员可以点击合并进行合并，有冲突也可以在gogs 上点击 编辑（小笔）解决冲突后合并。</p>
 
-      
-
+            
       
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">

@@ -32,6 +32,16 @@
 
   
 
+  <script>
+	(function(){
+		if(""){
+			if (prompt('这是加密文章，打赏先！','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
 </head>
 
 <body>
@@ -148,7 +158,8 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ssh-keygen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+        <article id="post-ssh-keygen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -167,8 +178,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ssh-keygen生成git-ssh密钥"><a href="#ssh-keygen生成git-ssh密钥" class="headerlink" title="ssh-keygen生成git ssh密钥"></a>ssh-keygen生成git ssh密钥</h3><p>SSH是建立在应用层和传输层基础上的安全协议，其目的是专为远程登录会话和其他网络服务提供安全性的保障，用过SSH远程登录的人都比较熟悉，可以认为SSH是一种安全的Shell。SSH登录是需要用户名和密码的，要实现无密码登录，就需要创建SSH 密钥（ssh key），SSH 密钥可以认为是和另一台电脑通信时的唯一的识别证，SSH 密钥对可以让我们方便的登录到 SSH 服务器，而无需输入密码。GIT源代码管理就是使用此种安全机制，本文本将介绍SSH KEY的生成过程。</p>
+            
+                <h3 id="ssh-keygen生成git-ssh密钥"><a href="#ssh-keygen生成git-ssh密钥" class="headerlink" title="ssh-keygen生成git ssh密钥"></a>ssh-keygen生成git ssh密钥</h3><p>SSH是建立在应用层和传输层基础上的安全协议，其目的是专为远程登录会话和其他网络服务提供安全性的保障，用过SSH远程登录的人都比较熟悉，可以认为SSH是一种安全的Shell。SSH登录是需要用户名和密码的，要实现无密码登录，就需要创建SSH 密钥（ssh key），SSH 密钥可以认为是和另一台电脑通信时的唯一的识别证，SSH 密钥对可以让我们方便的登录到 SSH 服务器，而无需输入密码。GIT源代码管理就是使用此种安全机制，本文本将介绍SSH KEY的生成过程。</p>
 <h4 id="检查是否生成过ssh-密钥"><a href="#检查是否生成过ssh-密钥" class="headerlink" title="检查是否生成过ssh 密钥"></a>检查是否生成过ssh 密钥</h4><p>生成ssh 密钥后，会在当前用户的根目录下创建.ssh目录。因此，可以通过以下两种方式检查是否生成过ssh 密钥。</p>
 <p>其一，是否可切换到.ssh目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh    <span class="comment">#window的是在用户目录下，如C:\Users\Administrator，直接这个命令也可以，如果.ssh目录存在则会切换到对应目录。</span></span><br><span class="line">ls -l ~/    <span class="comment">#查看</span></span><br></pre></td></tr></table></figure>
@@ -178,8 +189,7 @@
 <h4 id="在gitlab上使用ssh"><a href="#在gitlab上使用ssh" class="headerlink" title="在gitlab上使用ssh"></a>在gitlab上使用ssh</h4><p>复制id_rsa.pub文件里面的内容，添加到web系统帐号的设置里面，以gitlab为例：<br><img src="/2018/05/07/ssh-keygen/1.jpg" title="ssh"></p>
 <h4 id="连接项目的时候全都用ssh"><a href="#连接项目的时候全都用ssh" class="headerlink" title="连接项目的时候全都用ssh"></a>连接项目的时候全都用ssh</h4><p>添加密钥后，用ssh链接项目就不需要每次都输入帐号密码了，注意：不是http<br><img src="/2018/05/07/ssh-keygen/2.jpg" title="ssh"></p>
 
-      
-
+            
       
     </div>
     <div class="article-info article-info-index">
@@ -233,104 +243,12 @@
 
 
 
+        
   
-    <article id="post-centos-yum离线源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/01/centos-yum离线源/">centos-yum离线源</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/01/centos-yum离线源/" class="archive-article-date">
-  	<time datetime="2018-05-01T06:00:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="配置离线源"><a href="#配置离线源" class="headerlink" title="配置离线源"></a>配置离线源</h2><p>在个别开发环境中，我们可能有限制不能连外网。<br>这个情况可以通过用一台同内网的机器配置离线源，然后通过vsftp公用。</p>
-<h3 id="安装ftp"><a href="#安装ftp" class="headerlink" title="安装ftp"></a>安装ftp</h3><h4 id="rpm命令详解"><a href="#rpm命令详解" class="headerlink" title="rpm命令详解"></a>rpm命令详解</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -ivh apache-1.3.6.i386.rpm    <span class="comment">#安装软件：执行rpm -ivh rpm包名</span></span><br><span class="line">$ rpm -Uvh rpm包名    <span class="comment">#升级软件</span></span><br><span class="line">$ rpm -e rpm        <span class="comment">#卸载</span></span><br><span class="line">$ rpm -qpi rpm包名    <span class="comment">#查询软件包的详细信息</span></span><br><span class="line">$ rpm -qf rpm包名    <span class="comment">#查询某个文件是属于那个rpm包的</span></span><br><span class="line">$ rpm -qpl rpm包名    <span class="comment">#查该软件包会向系统里面写入哪些文件</span></span><br></pre></td></tr></table></figure>
-<h4 id="判断是否安装了-vsftp"><a href="#判断是否安装了-vsftp" class="headerlink" title="判断是否安装了 vsftp"></a>判断是否安装了 vsftp</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@vs-yth12 ~]$ rpm -qa | grep vsftpd</span><br><span class="line">vsftpd-3.0.2-21.el7.x86_64    <span class="comment">#出现这个证明是安装了</span></span><br><span class="line">[root@vs-yth12 ~]$ yum install vsftpd    <span class="comment">#也可以用这个判断</span></span><br><span class="line">....</span><br><span class="line">Package vsftpd-3.0.2-21.el7.x86_64 already installed and latest version</span><br><span class="line">Nothing to <span class="keyword">do</span>    <span class="comment">#说已经安装了</span></span><br></pre></td></tr></table></figure>
-<h4 id="安装-vsftp"><a href="#安装-vsftp" class="headerlink" title="安装 vsftp"></a>安装 vsftp</h4><p>一般来说，centos都默认安装好了的，如果没安装，<br>下载 FTP：- <a href="http://rpmfind.net/linux/rpm2html/search.php?query=vsftpd(x86-64" target="_blank" rel="noopener">http://rpmfind.net/linux/rpm2html/search.php?query=vsftpd(x86-64)</a>)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@vs-yth12 ~]rpm -ivh vsftpd-3.0.2-21.el7.x86_64.rpm    <span class="comment">#直接安装</span></span><br><span class="line">[root@localhost ~]$ service vsftpd start    <span class="comment">#测试是否安装成功</span></span><br><span class="line">[root@vs-yth12 ~]$ whereis vsftpd    <span class="comment"># 默认配置文件: /etc/vsftpd/vsftpd.conf</span></span><br><span class="line">vsftpd: /usr/sbin/vsftpd /etc/vsftpd /usr/share/man/man8/vsftpd.8.gz</span><br></pre></td></tr></table></figure></p>
-<h3 id="上传配置离线源"><a href="#上传配置离线源" class="headerlink" title="上传配置离线源"></a>上传配置离线源</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>下载 centos镜像，这个官网下：- <a href="http://vault.centos.org/" target="_blank" rel="noopener">http://vault.centos.org/</a><br>阿里云：- <a href="https://mirrors.aliyun.com/centos/" target="_blank" rel="noopener">https://mirrors.aliyun.com/centos/</a><br>链接进去后选择对应的版本，如7.3.1611点进去后再点击isos,就可以找到。<br>下载epel,这个比较大。目前网上没找到可以下载的，可以自己做：- <a href="http://mirrors.sohu.com/fedora-epel/7/x86_64/" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/7/x86_64/</a><br>这3个文件夹内容全下下来后，用UltraISO做成iso即可。注册码在网上找到了一个可以用的：<br>名：王涛<br>码：7C81-1689-4046-626F</p>
-<p>CentOS-7-x86_64-DVD-1611.iso<br>epel-7.x86_64.iso</p>
-<h4 id="上传配置"><a href="#上传配置" class="headerlink" title="上传配置"></a>上传配置</h4><p>把CentOS-7-x86_64-DVD-1611.iso,epel-7.x86_64.iso这2个镜像上传到/data上<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span>  /var/ftp/pub    </span><br><span class="line">$ mkdir epel  </span><br><span class="line">$ mkdir centos    </span><br><span class="line">$ mount /data/epel-7.x86_64.iso /var/ftp/pub/epel</span><br><span class="line">$ mount /data/epel-7.x86_64.iso /var/ftp/pub/centos</span><br><span class="line">$ <span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line">$ mkdir backup</span><br><span class="line">$ mv * backup    <span class="comment">#把所有文件移走备份,如果要用时移回来报错就yum clean all&amp;yum makecache</span></span><br><span class="line">$ vi ftp.repo</span><br><span class="line">[centos73]</span><br><span class="line">name=centos73</span><br><span class="line">baseurl=ftp://10.92.190.46/pub/centos73</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">[epel]</span><br><span class="line">name=epel    <span class="comment">#自定义</span></span><br><span class="line">baseurl=ftp://10.92.190.46/pub/epel    <span class="comment">#可以用http,也可以本地文件：file:///var/ftp/pub/centos</span></span><br><span class="line">enabled=1    <span class="comment">#必须是1，这个配置文件才会生效</span></span><br><span class="line">gpgcheck=0    <span class="comment">#必须是0，这样就不检查</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="其他机器"><a href="#其他机器" class="headerlink" title="其他机器"></a>其他机器</h3><p>1.安装 vsftp，启动<br>2.移除所有/etc/yum.repos.d/下的所有文件<br>3.重新写上ftp.repo文件</p>
-<h2 id="中间件离线安装"><a href="#中间件离线安装" class="headerlink" title="中间件离线安装"></a>中间件离线安装</h2><p>在部分工作场景中有时候会遇到一些私有化部署的问题，就是在一些无法上网的机器上面安装使用一些中间件，这就引出了离线安装的问题，这里以docker的离线安装为例。</p>
-<h3 id="离线安装包下载"><a href="#离线安装包下载" class="headerlink" title="离线安装包下载"></a>离线安装包下载</h3><p>准备一台可以联网，系统版本跟局域网那台的一样，同样没有安装过docker的机器。<br>一般使用yum install下载安装包会进行安装，安装完成后删除下载的安装包,这里只下载不安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install --downloadonly --downloaddir=/home/docker/dockerRpm docker    <span class="comment">#将所有rpm包下载到/home/docker/dockerRpm上</span></span><br></pre></td></tr></table></figure></p>
- <img src="/2018/05/01/centos-yum离线源/1.jpg" title="下载的安装包">
-<h3 id="制作yum源"><a href="#制作yum源" class="headerlink" title="制作yum源"></a>制作yum源</h3><p>先将所有rpm复制到局域网的机器上，我的放 /var/ftp/pub/docker<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /var/ftp/pub/docker    </span><br><span class="line">$ createrepo .    <span class="comment">#构建源，生成repodata目录</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="上传配置-1"><a href="#上传配置-1" class="headerlink" title="上传配置"></a>上传配置</h4><p>添加配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line">$ vi ftp.repo</span><br><span class="line">[bk]</span><br><span class="line">name=bk</span><br><span class="line">baseurl=ftp://10.92.190.55/pub/bk    <span class="comment">#也可以用file:///var/ftp/pub/docker,这里用ftp需要systemctl enable vsftpd&amp;&amp;systemctl start vsftpd</span></span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">[centos73]</span><br><span class="line">name=centos73</span><br><span class="line">baseurl=ftp://10.92.190.46/pub/centos73</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">[epel]</span><br><span class="line">name=epel    <span class="comment">#自定义</span></span><br><span class="line">baseurl=ftp://10.92.190.46/pub/epel    <span class="comment">#可以用http,也可以本地文件：file:///var/ftp/pub/centos</span></span><br><span class="line">enabled=1    <span class="comment">#必须是1，这个配置文件才会生效</span></span><br><span class="line">gpgcheck=0    <span class="comment">#必须是0，这样就不检查</span></span><br><span class="line"></span><br><span class="line">$ yum repolist    <span class="comment">#查看是否能看到自己构建的源</span></span><br><span class="line">repo id                                                    repo name                                        status</span><br><span class="line">!centos73                                                  centos73                                         3,831</span><br><span class="line">!docker                                                    docker                                           20</span><br><span class="line">!epel                                                      epel                                             12,266</span><br><span class="line">repolist: 16,117</span><br><span class="line"></span><br><span class="line">$ yum clean all     <span class="comment">#清除缓存</span></span><br><span class="line">$ yum makercache    <span class="comment">#创建缓存</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code class="bash">$ yum install docker    <span class="comment">#安装，这里要跟下包时的名称一样</span>
-</code></pre>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离线源</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/01/centos-yum离线源/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git-team-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+        <article id="post-git-team-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -349,8 +267,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="项目负责人创建组织架构"><a href="#项目负责人创建组织架构" class="headerlink" title="项目负责人创建组织架构"></a>项目负责人创建组织架构</h3><img src="/2018/04/24/git-team-work/1.jpg" title="创建组织">
+            
+                <h3 id="项目负责人创建组织架构"><a href="#项目负责人创建组织架构" class="headerlink" title="项目负责人创建组织架构"></a>项目负责人创建组织架构</h3><img src="/2018/04/24/git-team-work/1.jpg" title="创建组织">
 <p>在控制面板中点击组织按钮,添加组织,在这里可以把组织理解为一个公司<br>添加成功后，进入刚刚新建的组织<br>邀请他人加入—-相当于公司成员<br>组织团队可以进行分组，默认的Owners是管理组<br><img src="/2018/04/24/git-team-work/2.jpg" title="组织"></p>
 <h3 id="项目负责人创建新的仓库"><a href="#项目负责人创建新的仓库" class="headerlink" title="项目负责人创建新的仓库"></a>项目负责人创建新的仓库</h3><p>创建新的仓库。<br>打勾 该仓库为私有的。<br>创建仓库。</p>
 <p>创建成功后，项目负责人下载git后，在需要上传的文件夹中右键选中 Git Bash Here<br>依次运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init      <span class="comment">#初始化</span></span><br><span class="line">git add .     <span class="comment">#添加到本地仓库 . 表示全部当前文件夹中的所有文件和目录 </span></span><br><span class="line">git commit -m <span class="string">"first commit"</span>  <span class="comment">#添加后生效的必须提交 -m 后面的是提交的备注</span></span><br><span class="line">git remote add origin http://10.92.216.250:3000/<span class="built_in">test</span>/test.git  <span class="comment">#连接我们新建的远程仓库</span></span><br><span class="line">git push -u origin master  <span class="comment">#将本地仓库的所有推送到远程仓库，需要输入帐号密码</span></span><br></pre></td></tr></table></figure></p>
@@ -382,8 +300,7 @@
 <h3 id="分支的基本操作"><a href="#分支的基本操作" class="headerlink" title="分支的基本操作"></a>分支的基本操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">分支的基本操作</span><br><span class="line">$ git branch   <span class="comment">#查看分支</span></span><br><span class="line">* master       <span class="comment">#有*的就是当前分支</span></span><br><span class="line">$ git branch <span class="built_in">test</span>  <span class="comment">#创建test分支</span></span><br><span class="line">$ git checkout <span class="built_in">test</span>   <span class="comment">#切换到test分支，然后可以在该分支进行常规的开发和操作,</span></span><br><span class="line">$ git checkout -b <span class="built_in">test</span>  <span class="comment">#创建并切换分支</span></span><br><span class="line">$ touch test2.txt  <span class="comment">#创建一个test2的文件夹</span></span><br><span class="line">$ git add test2.txt</span><br><span class="line">$ git commit -m <span class="string">'小张在新分支test中创建了一个text2.txt文件'</span></span><br><span class="line">$ git push origin <span class="built_in">test</span>  <span class="comment">#注意，这里是把本地的test分支推送到origin远程主机上</span></span><br><span class="line"></span><br><span class="line">$ git checkout master  <span class="comment">#切换到主分区</span></span><br><span class="line">$ git merge <span class="built_in">test</span>  <span class="comment">#合并指定分支到当前分支</span></span><br><span class="line">$ git branch -d <span class="built_in">test</span> <span class="comment">#删除test分支</span></span><br></pre></td></tr></table></figure>
 <h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>这波操作后gogs 上仓库就有新的test分支了<br>项目管理员可以在仓库设置中-&gt;管理分支-&gt;保护分支-&gt;把给主分支开启保护<br><img src="/2018/04/24/git-team-work/5.jpg" title="管理分支"><br>其他人可以在其他分支中创建合并请求<br><img src="/2018/04/24/git-team-work/6.jpg" title="合并请求"><br>该仓库管理团队的成员可以点击合并进行合并，有冲突也可以在gogs 上点击 编辑（小笔）解决冲突后合并。</p>
 
-      
-
+            
       
     </div>
     <div class="article-info article-info-index">
@@ -433,8 +350,10 @@
 
 
 
+        
   
-    <article id="post-LVM详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+        <article id="post-LVM详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -453,8 +372,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="知识了解"><a href="#知识了解" class="headerlink" title="知识了解"></a>知识了解</h3><h4 id="LVM关系图"><a href="#LVM关系图" class="headerlink" title="LVM关系图"></a>LVM关系图</h4><img src="/2018/04/24/LVM详解/1.jpg" title="LVM关系图">
+            
+                <h3 id="知识了解"><a href="#知识了解" class="headerlink" title="知识了解"></a>知识了解</h3><h4 id="LVM关系图"><a href="#LVM关系图" class="headerlink" title="LVM关系图"></a>LVM关系图</h4><img src="/2018/04/24/LVM详解/1.jpg" title="LVM关系图">
 <h4 id="fdisk命令详解"><a href="#fdisk命令详解" class="headerlink" title="fdisk命令详解"></a>fdisk命令详解</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost beinan]<span class="comment"># fdisk /dev/xvde</span></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): 在这里按 m ，就会输出帮助；</span><br><span class="line">Command action</span><br><span class="line">a   toggle a bootable flag    <span class="comment">#设置启动分区</span></span><br><span class="line">b   edit bsd disklabel    <span class="comment">#编辑分区标签</span></span><br><span class="line">c   toggle the dos compatibility flag</span><br><span class="line">d   delete a partition    <span class="comment">#这是删除一个分区的动作</span></span><br><span class="line">g   create a new empty GPT partition table</span><br><span class="line">G   create an IRIX (SGI) partition table</span><br><span class="line">l   list known partition types    <span class="comment">#l 是列出分区类型，以供我们设置相应分区的类型</span></span><br><span class="line">m   <span class="built_in">print</span> this menu    <span class="comment">#m 是列出帮助信息</span></span><br><span class="line">n   add a new partition    <span class="comment">#添加一个分区</span></span><br><span class="line">o   create a new empty DOS partition table</span><br><span class="line">p   <span class="built_in">print</span> the partition table    <span class="comment">#p 列出分区表</span></span><br><span class="line">q   quit without saving changes    <span class="comment">#不保存退出</span></span><br><span class="line">s   create a new empty Sun disklabel</span><br><span class="line">t   change a partition‘s system id    <span class="comment">#t 改变分区类型</span></span><br><span class="line">u   change display/entry units    <span class="comment">#改变显示的单位</span></span><br><span class="line">v   verify the partition table    <span class="comment">#检查验证分区表</span></span><br><span class="line">w   write table to disk and <span class="built_in">exit</span>    <span class="comment">#把分区表写入硬盘并退出</span></span><br><span class="line">x   extra functionality (experts only) <span class="comment">#扩展</span></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): l</span><br><span class="line"></span><br><span class="line">0  Empty           24  NEC DOS         81  Minix / old Lin bf  Solaris        </span><br><span class="line">1  FAT12           27  Hidden NTFS Win 82  Linux swap / So c1  DRDOS/sec (FAT-</span><br><span class="line">2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-</span><br><span class="line">3  XENIX usr       3c  PartitionMagic  84  OS/2 hidden C:  c6  DRDOS/sec (FAT-</span><br><span class="line">4  FAT16 &lt;32M      40  Venix 80286     85  Linux extended  c7  Syrinx         </span><br><span class="line">5  Extended        41  PPC PReP Boot   86  NTFS volume <span class="built_in">set</span> da  Non-FS data    </span><br><span class="line">6  FAT16           42  SFS             87  NTFS volume <span class="built_in">set</span> db  CP/M / CTOS / .</span><br><span class="line">7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux plaintext de  Dell Utility   </span><br><span class="line">8  AIX             4e  QNX4.x 2nd part 8e  Linux LVM       df  BootIt         </span><br><span class="line">9  AIX bootable    4f  QNX4.x 3rd part 93  Amoeba          e1  DOS access     </span><br><span class="line">a  OS/2 Boot Manag 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O        </span><br><span class="line">b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor      </span><br><span class="line">c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad hi eb  BeOS fs        </span><br><span class="line">e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT            </span><br><span class="line">f  W95 Ext‘d (LBA) 54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/</span><br><span class="line">10  OPUS            55  EZ-Drive        a7  NeXTSTEP        f0  Linux/PA-RISC b</span><br><span class="line">11  Hidden FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor      </span><br><span class="line">12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f4  SpeedStor      </span><br><span class="line">14  Hidden FAT16 &lt;3 61  SpeedStor       ab  Darwin boot     f2  DOS secondary  </span><br><span class="line">16  Hidden FAT16    63  GNU HURD or Sys af  HFS / HFS+      fb  VMware VMFS    </span><br><span class="line">17  Hidden HPFS/NTF 64  Novell Netware  b7  BSDI fs         <span class="built_in">fc</span>  VMware VMKCORE </span><br><span class="line">18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fd  Linux raid auto</span><br><span class="line">1b  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid fe  LANstep        </span><br><span class="line">1c  Hidden W95 FAT3 75  PC/IX           be  Solaris boot    ff  BBT            </span><br><span class="line">1e  Hidden W95 FAT1 80  Old Minix</span><br></pre></td></tr></table></figure>
 <h3 id="新建LVM"><a href="#新建LVM" class="headerlink" title="新建LVM"></a>新建LVM</h3><h4 id="查看分区和磁盘情况"><a href="#查看分区和磁盘情况" class="headerlink" title="查看分区和磁盘情况"></a>查看分区和磁盘情况</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[root@vs-yth12 ~]$ fdisk -l</span><br><span class="line"></span><br><span class="line">Disk /dev/xvda: 64.4 GB, 64424509440 bytes, 125829120 sectors</span><br><span class="line">Units = sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disk label <span class="built_in">type</span>: dos</span><br><span class="line">Disk identifier: 0x000743c6</span><br><span class="line"></span><br><span class="line">    Device Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/xvda1   *        2048   100663295    50330624   83  Linux</span><br><span class="line">/dev/xvda2       100663296   125829119    12582912   82  Linux swap / Solaris</span><br><span class="line"></span><br><span class="line">Disk /dev/xvde: 42.9 GB, 42949672960 bytes, 83886080 sectors</span><br><span class="line">Units = sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disk label <span class="built_in">type</span>: dos</span><br><span class="line">Disk identifier: 0x7262c8b2</span><br><span class="line"></span><br><span class="line">    Device Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/xvde1            2048    83886079    41942016   82  Linux swap / Solaris</span><br><span class="line">[root@vs-yth12 ~]$ lsblk</span><br><span class="line">NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sr0      11:0    1 1024M  0 rom  </span><br><span class="line">xvda    202:0    0   60G  0 disk </span><br><span class="line">├─xvda1 202:1    0   48G  0 part /</span><br><span class="line">└─xvda2 202:2    0   12G  0 part [SWAP]</span><br><span class="line">xvde    202:64   0   40G  0 disk </span><br><span class="line">└─xvde1 202:65   0   40G  0 part</span><br></pre></td></tr></table></figure>
 <h4 id="新建分区和修改分区类型ID为8e"><a href="#新建分区和修改分区类型ID为8e" class="headerlink" title="新建分区和修改分区类型ID为8e"></a>新建分区和修改分区类型ID为8e</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">[root@vs-yth12 ~]$ fdisk /dev/xvde</span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write <span class="built_in">command</span>.</span><br><span class="line"></span><br><span class="line">Device does not contain a recognized partition table</span><br><span class="line">Building a new DOS disklabel with disk identifier 0x7262c8b2.</span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): t</span><br><span class="line">No partition is defined yet!</span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n  </span><br><span class="line">Partition <span class="built_in">type</span>:</span><br><span class="line">p   primary (0 primary, 0 extended, 4 free)    <span class="comment">#主分区</span></span><br><span class="line">e   extended    <span class="comment">#逻辑分区</span></span><br><span class="line">Select (default p): p</span><br><span class="line">Partition number (1-4, default 1): </span><br><span class="line">First sector (2048-83886079, default 2048): </span><br><span class="line">Using default value 2048</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G&#125; (2048-83886079, default 83886079): </span><br><span class="line">Using default value 83886079</span><br><span class="line">Partition 1 of <span class="built_in">type</span> Linux and of size 40 GiB is <span class="built_in">set</span></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): t</span><br><span class="line">Selected partition 1</span><br><span class="line">Hex code (<span class="built_in">type</span> L to list all codes): 8e</span><br><span class="line">Changed <span class="built_in">type</span> of partition <span class="string">'Linux'</span> to <span class="string">'Linux LVM'</span></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br><span class="line"></span><br><span class="line">[root@vs-yth12 ~]$ partprobe    <span class="comment">#在线更新</span></span><br></pre></td></tr></table></figure>
@@ -481,8 +400,7 @@
 <li><a href="https://jingyan.baidu.com/article/0f5fb099131f306d8234ea53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/0f5fb099131f306d8234ea53.html</a></li>
 </ul>
 
-      
-
+            
       
     </div>
     <div class="article-info article-info-index">
@@ -540,8 +458,10 @@
 
 
 
+        
   
-    <article id="post-vue安装搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+        <article id="post-vue安装搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -560,8 +480,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装nodejs"><a href="#首先安装nodejs" class="headerlink" title="首先安装nodejs"></a>首先安装nodejs</h4><p>直接官网下载最新版本<code>http://nodejs.cn/download/</code>,安装对应版本即可。<br>这里下64位window.msi版本。<br>安装修改安装路径后其他默认即可。我放D盘</p>
+            
+                <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装nodejs"><a href="#首先安装nodejs" class="headerlink" title="首先安装nodejs"></a>首先安装nodejs</h4><p>直接官网下载最新版本<code>http://nodejs.cn/download/</code>,安装对应版本即可。<br>这里下64位window.msi版本。<br>安装修改安装路径后其他默认即可。我放D盘</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><p>安装后需要修改npm的环境配置,无所谓的也可以不改。<br>不改的话npm install 会默认安装到<code>C:\Users\Administrator\AppData\Roaming\npm</code><br>在我的安装路径下<code>D:\nodejs</code>里面新增两个文件夹<code>node_global</code>及<code>node_cache</code><br> <img src="/2018/04/21/vue安装搭建/1.jpg" title="目录"></p>
 <p>在命令行中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\nodejs\node_global"</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\nodejs\node_cache"</span></span><br></pre></td></tr></table></figure></p>
 <p>在环境变量中的<code>系统变量</code>新建<code>NODE_PATH</code>,输入<code>D:\nodejs\node_global\node_modules</code>,<br> <img src="/2018/04/21/vue安装搭建/2.jpg" title="系统变量"><br>在环境变量中的<code>用户变量</code>编辑<code>path</code>,把安装nodejs自动设置的<code>C:\Users\Administrator\AppData\Roaming\npm</code>这个<br>修改为<code>D:\nodejs\node_global</code><br> <img src="/2018/04/21/vue安装搭建/3.jpg" title="用户变量"></p>
@@ -573,8 +493,7 @@
  <img src="/2018/04/21/vue安装搭建/4.jpg" title="成功界面">
 <h4 id="打包上线"><a href="#打包上线" class="headerlink" title="打包上线"></a>打包上线</h4><p>因为是单页面，打包后就可以用了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build <span class="comment">#打包完成后，会生成 dist 文件夹，可以直接打开本地文件查看</span></span><br><span class="line"> <span class="comment">#项目上线时，只需要将 dist 文件夹放到服务器就行了。</span></span><br></pre></td></tr></table></figure></p>
 
-      
-
+            
       
     </div>
     <div class="article-info article-info-index">
@@ -624,8 +543,10 @@
 
 
 
+        
   
-    <article id="post-vuejs如何在服务器部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+        <article id="post-vuejs如何在服务器部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -644,8 +565,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="上传到网站服务器"><a href="#上传到网站服务器" class="headerlink" title="上传到网站服务器"></a>上传到网站服务器</h3><p>Vue 是一个 javascript 的前端框架，它是运行在浏览器里的，对服务器本身没有任何要求，只要一个静态文件服务器能通过 http 访问到其资源文件就可以了！无论你是用 apache, ngnix 都是可以的。<br>npm run dev 命令行是用来在本地开发的时候做调试用的，通过 npm run build 把生成的 dist 文件夹（不要上传文件夹）里的内容上传到http服务器上就可以通过 http 来访问了，开发机上正常，上传以后程序出现错误不能运行，最大的可能性是你引用资源的路径有问题。<br>一般如果 Vue 框架的程序上传到网站服务器的根目录下是不会有问题的，也不存在资源文件引用错误的情况，但如果你不是上传到根目录，就会有问题，通过 vue-cli 生成的开发目录，build 以后默认引用资源文件的路径是<br>比如 app.js 的引用方式<code>&lt;script type=&quot;text/javascript&quot; src=&quot;/static/js/app.js&quot;&gt;&lt;/script&gt;</code></p>
+            
+                <h3 id="上传到网站服务器"><a href="#上传到网站服务器" class="headerlink" title="上传到网站服务器"></a>上传到网站服务器</h3><p>Vue 是一个 javascript 的前端框架，它是运行在浏览器里的，对服务器本身没有任何要求，只要一个静态文件服务器能通过 http 访问到其资源文件就可以了！无论你是用 apache, ngnix 都是可以的。<br>npm run dev 命令行是用来在本地开发的时候做调试用的，通过 npm run build 把生成的 dist 文件夹（不要上传文件夹）里的内容上传到http服务器上就可以通过 http 来访问了，开发机上正常，上传以后程序出现错误不能运行，最大的可能性是你引用资源的路径有问题。<br>一般如果 Vue 框架的程序上传到网站服务器的根目录下是不会有问题的，也不存在资源文件引用错误的情况，但如果你不是上传到根目录，就会有问题，通过 vue-cli 生成的开发目录，build 以后默认引用资源文件的路径是<br>比如 app.js 的引用方式<code>&lt;script type=&quot;text/javascript&quot; src=&quot;/static/js/app.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>所以，如果你的目录结构是如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">目录结构</span><br><span class="line">|——www/</span><br><span class="line">    |__hot/</span><br><span class="line">        |__static/</span><br><span class="line">             |__index.html</span><br></pre></td></tr></table></figure></p>
 <p>当你通过<br><code>http://www.xxx.com/hot/index.html</code>来访问的时候，会出现找不到  app.js 的问题。<br>因为 index.html 里引用的 app.js 路径是 <code>http://www.xxx.com/static/js/app.js</code><br>但是 app.js 的实际路径是 <code>http://www.xxx.com/hot/static/js/app.js</code>，所以出现了404错误。</p>
 <p>解决方法很简单，把引用方式改成下面两种方式都可以<br>    <code>&lt;script type=&quot;text/javascript&quot; src=&quot;./static/js/app.js&quot;&gt;&lt;/script&gt;</code><br>或者<br>    <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/hot/static/js/app.js&quot;&gt;&lt;/script&gt;</code><br>推荐第二种方式，可以保证在 vue-router 生成的 url 下也不出现问题，当然这也不需要手动去改，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在webpack的配置文件中修改</span><br><span class="line">assetsPublicPath: <span class="string">'./'</span></span><br><span class="line">或者</span><br><span class="line">assetsPublicPath: <span class="string">'/hot/'</span>,</span><br></pre></td></tr></table></figure></p>
@@ -666,8 +587,7 @@
 <li><a href="https://www.zhihu.com/question/46630687/answer/157166318" target="_blank" rel="noopener">https://www.zhihu.com/question/46630687/answer/157166318</a></li>
 </ul>
 
-      
-
+            
       
     </div>
     <div class="article-info article-info-index">
@@ -717,6 +637,7 @@
 
 
 
+        
   
   
 

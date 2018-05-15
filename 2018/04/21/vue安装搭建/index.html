@@ -42,6 +42,16 @@
 
   
 
+  <script>
+	(function(){
+		if(""){
+			if (prompt('这是加密文章，打赏先！','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
 </head>
 
 <body>
@@ -175,8 +185,8 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装nodejs"><a href="#首先安装nodejs" class="headerlink" title="首先安装nodejs"></a>首先安装nodejs</h4><p>直接官网下载最新版本<code>http://nodejs.cn/download/</code>,安装对应版本即可。<br>这里下64位window.msi版本。<br>安装修改安装路径后其他默认即可。我放D盘</p>
+            
+                <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装nodejs"><a href="#首先安装nodejs" class="headerlink" title="首先安装nodejs"></a>首先安装nodejs</h4><p>直接官网下载最新版本<code>http://nodejs.cn/download/</code>,安装对应版本即可。<br>这里下64位window.msi版本。<br>安装修改安装路径后其他默认即可。我放D盘</p>
 <h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><p>安装后需要修改npm的环境配置,无所谓的也可以不改。<br>不改的话npm install 会默认安装到<code>C:\Users\Administrator\AppData\Roaming\npm</code><br>在我的安装路径下<code>D:\nodejs</code>里面新增两个文件夹<code>node_global</code>及<code>node_cache</code><br> <img src="/2018/04/21/vue安装搭建/1.jpg" title="目录"></p>
 <p>在命令行中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\nodejs\node_global"</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\nodejs\node_cache"</span></span><br></pre></td></tr></table></figure></p>
 <p>在环境变量中的<code>系统变量</code>新建<code>NODE_PATH</code>,输入<code>D:\nodejs\node_global\node_modules</code>,<br> <img src="/2018/04/21/vue安装搭建/2.jpg" title="系统变量"><br>在环境变量中的<code>用户变量</code>编辑<code>path</code>,把安装nodejs自动设置的<code>C:\Users\Administrator\AppData\Roaming\npm</code>这个<br>修改为<code>D:\nodejs\node_global</code><br> <img src="/2018/04/21/vue安装搭建/3.jpg" title="用户变量"></p>
@@ -188,8 +198,7 @@
  <img src="/2018/04/21/vue安装搭建/4.jpg" title="成功界面">
 <h4 id="打包上线"><a href="#打包上线" class="headerlink" title="打包上线"></a>打包上线</h4><p>因为是单页面，打包后就可以用了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build <span class="comment">#打包完成后，会生成 dist 文件夹，可以直接打开本地文件查看</span></span><br><span class="line"> <span class="comment">#项目上线时，只需要将 dist 文件夹放到服务器就行了。</span></span><br></pre></td></tr></table></figure></p>
 
-      
-
+            
       
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
